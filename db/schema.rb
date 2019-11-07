@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_051348) do
+ActiveRecord::Schema.define(version: 2019_11_07_024822) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,4 +38,85 @@ ActiveRecord::Schema.define(version: 2019_11_06_051348) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password"
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
+    t.integer "province_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["province_id"], name: "index_customers_on_province_id"
+  end
+
+  create_table "ordered_products", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "discount_rate"
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_ordered_products_on_order_id"
+    t.index ["product_id"], name: "index_ordered_products_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status"
+    t.integer "customer_id", null: false
+    t.integer "payment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["payment_id"], name: "index_orders_on_payment_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "credit_card"
+    t.decimal "amount"
+    t.integer "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_payments_on_customer_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.integer "stock_quantity"
+    t.text "description"
+    t.string "image"
+    t.string "colour"
+    t.string "size"
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.decimal "PST"
+    t.decimal "GST"
+    t.decimal "HST"
+    t.decimal "QST"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "customers", "provinces"
+  add_foreign_key "ordered_products", "orders"
+  add_foreign_key "ordered_products", "products"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "payments"
+  add_foreign_key "payments", "customers"
+  add_foreign_key "products", "categories"
 end
