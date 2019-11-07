@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'activeadmin'
 gem 'devise'
+gem "bulma-rails", "~> 0.8.0"
 
 group :development, :test do
  gem 'rubocop'
