@@ -4,8 +4,10 @@ one:
   credit_card: 1
   amount: 9.99
   customer: one
+  order: one
 
 two:
   credit_card: 1
   amount: 9.99
   customer: two
+  order: two

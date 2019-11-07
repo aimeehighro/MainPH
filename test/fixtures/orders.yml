@@ -2,10 +2,6 @@
 
 one:
   status: MyString
-  customer: one
-  payment: one
 
 two:
   status: MyString
-  customer: two
-  payment: two

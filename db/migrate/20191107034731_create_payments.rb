@@ -4,6 +4,7 @@ class CreatePayments < ActiveRecord::Migration[6.0]
       t.integer :credit_card
       t.decimal :amount
       t.references :customer, null: false, foreign_key: true
+      t.references :order, null: false, foreign_key: true
 
       t.timestamps
     end

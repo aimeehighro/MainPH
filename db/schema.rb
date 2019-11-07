@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_030747) do
+ActiveRecord::Schema.define(version: 2019_11_07_034731) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -73,21 +73,19 @@ ActiveRecord::Schema.define(version: 2019_11_07_030747) do
 
   create_table "orders", force: :cascade do |t|
     t.string "status"
-    t.integer "customer_id", null: false
-    t.integer "payment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-    t.index ["payment_id"], name: "index_orders_on_payment_id"
   end
 
   create_table "payments", force: :cascade do |t|
     t.integer "credit_card"
     t.decimal "amount"
     t.integer "customer_id", null: false
+    t.integer "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_payments_on_customer_id"
+    t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -115,8 +113,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_030747) do
   add_foreign_key "customers", "provinces"
   add_foreign_key "ordered_products", "orders"
   add_foreign_key "ordered_products", "products"
-  add_foreign_key "orders", "customers"
-  add_foreign_key "orders", "payments"
   add_foreign_key "payments", "customers"
+  add_foreign_key "payments", "orders"
   add_foreign_key "products", "categories"
 end
