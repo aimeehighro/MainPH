@@ -1,0 +1,26 @@
+
+<div class="column is-one-quarter">
+<div class="card products">
+  <div class="card-image">
+    <figure class="image is-4by3">
+        <%= image_tag url_for(product.image)%>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+      <% if name_is_link %>
+       <p class="title is-4"><%= link_to product.name, product_path(product) %></p>
+       <% else %>
+        <p class="title is-4"><%= product.name %></p>
+      <%end%>
+        <p class="subtitle is-6"><strong>Amount: </strong> $<%= product.price%></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= product.description %>
+    </div>
+  </div>
+  </div>
+</div>
