@@ -1,0 +1,36 @@
+<section class="hero is-medium is-warning is-bold">
+  <div class="hero-body">
+    <div class="container" style="font-family: copperplate gothic bold; text-align: center;">
+      <h1 class="title" style="font-size: 500%;">
+        <%=@contacts[0].title%>
+      </h1>
+      <h2 class="subtitle">
+         <%=@contacts[0].description%>
+      </h2>
+    </div>
+  </div>
+</section>
+<article class="message is-dark">
+  <div class="message-header">
+    <p><i class="fas fa-at"></i> Email: </p>
+  </div>
+  <div class="message-body">
+    <%=@contacts[0].email%>
+  </div>
+</article>
+<article class="message is-link">
+<div class="message-header">
+    <p> <i class="fab fa-facebook"></i> Facebook: </p>
+  </div>
+  <div class="message-body">
+    <%=@contacts[0].facebook%>
+  </div>
+</article>
+<article class="message is-warning">
+<div class="message-header">
+    <p><i class="fab fa-instagram"></i> Instagram: </p>
+  </div>
+  <div class="message-body">
+    <%=@contacts[0].ig%>
+  </div>
+</article>
