@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # get 'products/index'
   # get 'products/show'
 
+  resources :categories, only: %i[index show]
   resources :products, only: %i[index show]
   root to: 'products#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
