@@ -1,4 +1,5 @@
 <h1 class="title is-1" style="text-align:center;">Products</h1>
+<%= pagy_bulma_nav(@pagy).html_safe %>
 <div class="columns is-half is-multiline">
 <%= render partial: 'products/product', collection: @category.products, locals: {name_is_link: true}%>
 </div>
