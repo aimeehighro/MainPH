@@ -84,7 +84,8 @@ Register here.
     <div class="field">
   <p class="control has-icons-left">
     <span class="select is-fullwidth">
-<%= select_tag :province, options_from_collection_for_select(Province.all, 'id', 'name') %>
+    <%= f.collection_select :province_id, Province.all, :id, :name %>
+<%# <%= select_tag :province, options_from_collection_for_select(Province.all, 'name', 'name') %>
     </span>
     <span class="icon is-small is-left">
       <i class="fas fa-globe"></i>
