@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_202034) do
+ActiveRecord::Schema.define(version: 2019_11_20_062448) do
 
   create_table "abouts", force: :cascade do |t|
     t.string "title"
@@ -82,20 +82,6 @@ ActiveRecord::Schema.define(version: 2019_11_13_202034) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password"
-    t.string "street"
-    t.string "city"
-    t.string "postal_code"
-    t.integer "province_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["province_id"], name: "index_customers_on_province_id"
-  end
-
   create_table "ordered_products", force: :cascade do |t|
     t.integer "quantity"
     t.integer "discount_rate"
@@ -155,15 +141,22 @@ ActiveRecord::Schema.define(version: 2019_11_13_202034) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
+    t.integer "province_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["province_id"], name: "index_users_on_province_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "customers", "provinces"
   add_foreign_key "ordered_products", "orders"
   add_foreign_key "ordered_products", "products"
   add_foreign_key "payments", "customers"
   add_foreign_key "payments", "orders"
   add_foreign_key "products", "categories"
+  add_foreign_key "users", "provinces"
 end
