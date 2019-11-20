@@ -11,8 +11,8 @@ class Product < ApplicationRecord
 
   has_one_attached :image
 
-  def self.search(search, category)
+  def self.search(search, category_id)
     # Title is for the above case, the OP incorrectly had 'name'
-    where('name LIKE ? AND category_id = ?', "%#{search}%", category)
+    where('name LIKE ? AND category_id = ?', "%#{search}%", category_id)
   end
 end

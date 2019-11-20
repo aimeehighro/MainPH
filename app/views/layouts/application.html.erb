@@ -12,6 +12,7 @@
 
   <body>
        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+       <script async type="text/javascript" src="./js/bulma.js"></script>
   <% if user_signed_in? %>
     <nav class="navbar is-dark" style="height:100px" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -42,24 +43,13 @@
      <%= link_to "About", abouts_index_path(), class:"navbar-item"%>
      <%= link_to "Contact", contacts_index_path(), class:"navbar-item"%>
       </div>
-    </div>
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <div class="control">
-            <div class="field has-addons">
-              <div class="select">
-              <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-                    <%= select_tag :category_id, options_from_collection_for_select(Category.all, 'id', 'name') %>
-              </div>
-              <%= text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input"%>
-              <%= submit_tag "Search", class:"button is-warning" %>
-                 <% end %>
              <%= link_to "Sign out", destroy_user_session_path(), method: :delete, class:"navbar-item", class:"button is-info", style:"font-weight:bolder;"%>
         </div>
       </div>
     </div>
-  </div>
   </nav>
   <% else %>
     <nav class="navbar is-dark" style="height:100px" role="navigation" aria-label="main navigation">
@@ -91,26 +81,25 @@
      <%= link_to "About", abouts_index_path(), class:"navbar-item"%>
      <%= link_to "Contact", contacts_index_path(), class:"navbar-item"%>
       </div>
-    </div>
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <div class="control">
-            <div class="field has-addons">
-              <div class="select">
-              <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-                    <%= select_tag :category, options_from_collection_for_select(Category.all, 'id', 'name') %>
-              </div>
-              <%= text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input"%>
-              <%= submit_tag "Search", class:"button is-warning" %>
-                 <% end %>
              <%= link_to "Sign up", new_user_registration_path(), class:"navbar-item", class:"button is-warning", style:"font-weight:bolder;"%>
              <%= link_to "Log in", new_user_session_path(), class:"navbar-item", class:"button is-black", style:"font-weight:bolder;"%>
         </div>
       </div>
     </div>
-  </div>
 </nav>
+<script type="text/javascript">
+      (function() {
+        var burger = document.querySelector('.burger');
+        var nav = document.querySelector('#'+burger.dataset.target);
+        burger.addEventListener('click', function(){
+          burger.classList.toggle('is-active');
+          nav.classList.toggle('is-active');
+        });
+      })();
+    </script>
   <% end %>
     <%= yield %>
   </body>
