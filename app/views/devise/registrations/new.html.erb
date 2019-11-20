@@ -15,8 +15,16 @@ Register here.
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+  <%= f.label :email %><br />
+  <p class="control is-expanded has-icons-left has-icons-right">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input"%>
+     <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
+      </p>
   </div>
 
   <div class="field">
@@ -24,17 +32,72 @@ Register here.
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
+    <p class="control is-expanded has-icons-left">
     <%= f.password_field :password, autocomplete: "new-password",class:"input" %>
+            <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
+    <p class="control is-expanded has-icons-left">
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
+            <span class="icon is-small is-left">
+         <i class="fas fa-lock"></i>
+        </span>
+      </p>
   </div>
+  <hr/>
+  <div class="field-body">
+    <div class="field">
+      <%= f.label :first_name %>
+      <p class="control is-expanded has-icons-left">
+        <%= f.text_field :first_name, autocomplete: "given-name", class:"input" %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+    <%= f.label :last_name %><br />
+       <%= f.text_field :last_name, autocomplete: "family-name", class:"input" %>
+    </div>
+  </div>
+  <br/>
+    <div class="field">
+      <%= f.label :street %>
+        <%= f.text_field :street, autocomplete: "address-line1", class:"input" %>
+    </div>
+     <div class="field-body">
+    <div class="field">
+    <%= f.label :city %><br />
+       <%= f.text_field :city, autocomplete: "address-level2", class:"input" %>
+    </div>
+        <div class="field">
+    <%= f.label :postal_code %><br />
+       <%= f.text_field :postal_code, autocomplete: "postal-code", class:"input" %>
+    </div>
+    </div>
+  <br/>
+    <div class="field">
+  <p class="control has-icons-left">
+    <span class="select is-fullwidth">
+<%= select_tag :province, options_from_collection_for_select(Province.all, 'id', 'name') %>
+    </span>
+    <span class="icon is-small is-left">
+      <i class="fas fa-globe"></i>
+    </span>
+  </p>
+</div>
 
+   <hr/>
   <div class="actions">
     <%= f.submit "Sign up", class:"button is-success is-fullwidth"%>
   </div>
+
+
 <% end %>
 <br/>
  <footer class="card-footer">
