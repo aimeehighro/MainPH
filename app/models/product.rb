@@ -15,4 +15,8 @@ class Product < ApplicationRecord
     # Title is for the above case, the OP incorrectly had 'name'
     where('name LIKE ? AND category_id = ?', "%#{search}%", category_id)
   end
+
+  def thumbnail
+    image.variant(resize: '300x300!').processed
+  end
 end

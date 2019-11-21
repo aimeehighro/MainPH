@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'activeadmin'
 gem 'devise'
 gem "bulma-rails", "~> 0.8.0"
+gem 'pagy'
+gem "mini_magick"
 
 group :development, :test do
  gem 'rubocop'
@@ -57,4 +59,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'pagy'
