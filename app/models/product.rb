@@ -19,4 +19,8 @@ class Product < ApplicationRecord
   def thumbnail
     image.variant(resize: '300x300!').processed
   end
+
+  def small
+    image.variant(resize: '150x150!').processed
+  end
 end
