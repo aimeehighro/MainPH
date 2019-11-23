@@ -1,0 +1,52 @@
+
+<h1 class="title is-1" style="text-align:center;">Shopping Cart </h1>
+
+<% if @cart.empty? %>
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Sorry!
+      </h1>
+      <h2 class="subtitle">
+        No items in your cart
+      </h2>
+    </div>
+  </div>
+</section>
+<% else %>
+<div class="section">
+  <table class="table is-bordered is-striped is-hoverable">
+  <thead>
+  <tr>
+  <th>Image
+  </th>
+  <th>
+      Product
+      </th>
+        <th>
+      Quantity
+      </th>
+              <th>
+      Unit Price
+      </th>
+      <th>
+      Remove
+      </th>
+      </tr>
+      </thead>
+       <% @cart.each do |product|%>
+      <tbody>
+      <tr>
+      <td> <%= image_tag url_for(product.small)%></td>
+      <td> <%= product.name %></td>
+      <td><%=number_field_tag 'quantity',  1, min: 1,class:"input" %></td>
+      <td> <%= product.price %></td>
+        <td> <%= link_to "Remove from cart", remove_from_cart_path(product.id), class:"button is-danger", method: :delete %></td>
+
+      </tr>
+      </tbody>
+        <%end%>
+  </table>
+  </div>
+   <%end%>

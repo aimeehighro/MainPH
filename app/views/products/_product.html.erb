@@ -24,5 +24,20 @@
       <%= product.description %>
     </div>
   </div>
+   <footer class="card-footer">
+   <% if @cart.include?(product) %>
+      <p class="card-footer-item">
+      <span>
+       <%= link_to "Remove from cart", remove_from_cart_path(product.id), class:"button is-danger", method: :delete %>
+      </span>
+    </p>
+   <% else%>
+    <p class="card-footer-item">
+      <span>
+       <%= link_to "Add to cart", add_to_cart_path(product.id), class:"button is-dark", method: :post %>
+      </span>
+    </p>
+  <% end %>
+    </footer>
   </div>
 </div>

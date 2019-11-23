@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :initialize_session
+  before_action :increment_visit_count
+  before_action :load_cart
 
   protected
 
@@ -11,4 +14,23 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[first_name last_name street city area postal_code province_id])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name street city area postal_code province_id])
   end
+
+  private
+
+  def initialize_session
+    session[:visit_count] ||= 0
+    session[:cart] ||= []
+  end
+
+  def increment_visit_count
+    session[:visit_count] += 1
+    @visit_count = session[:visit_count]
+  end
+
+  def load_cart
+    @cart = Product.find(session[:cart])
+  end
+
+
+
 end

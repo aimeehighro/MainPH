@@ -104,6 +104,9 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+        <%= link_to ordered_products_index_path(), class:"button is-info" do %>
+  <i class="fas fa-shopping-cart"></i>
+<% end %>
              <%= link_to "Sign up", new_user_registration_path(), class:"navbar-item", class:"button is-warning", style:"font-weight:bolder;"%>
              <%= link_to "Log in", new_user_session_path(), class:"navbar-item", class:"button is-black", style:"font-weight:bolder;"%>
         </div>
