@@ -17,9 +17,9 @@ ActiveAdmin.register Product do
   end
 
   index do
-      column :image do |display|
-        image_tag url_for(display.image)
-    end
+    #   column :image do |display|
+    #     image_tag url_for(display.image)
+    # end
     column :id
     column :name
     column :price
