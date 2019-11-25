@@ -1,6 +1,6 @@
 
 <h1 class="title is-1" style="text-align:center;">Shopping Cart </h1>
-
+<%=react_component("test", {data: @cart.as_json})%>
 <% if @cart.empty? %>
 <section class="hero is-info">
   <div class="hero-body">
