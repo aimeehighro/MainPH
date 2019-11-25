@@ -1,6 +1,7 @@
 <h1 class="title is-1" style="text-align:center;">Products</h1>
 
 <div class="container">
+<%# <%= debug session[:cart]%>
 <%= pagy_bulma_nav(@pagy).html_safe %>
           <div class="control">
             <div class="field has-addons">
@@ -25,15 +26,6 @@
    <%= submit_tag "Filter", class:"button is-warning"%>
 </div>
            <% end %>
-
-
-
-
-
-
-
-
-
 <br/>
 <div class="columns is-half is-multiline">
 <%= render partial: 'products/product', collection: @products, locals: { name_is_link: true }%>
