@@ -14,3 +14,30 @@
  *= require_self
  */
  @import "bulma";
+ @import url(https://fonts.googleapis.com/css?family=Cabin&display=swap);
+
+$font-stack: 'Cabin', sans-serif;
+$primary-color: #333;
+
+ body {
+  font: 100% $font-stack;
+  color: $primary-color;
+  // letter-spacing: 1px;
+}
+
+.buttons {
+  .button{
+    &:hover {
+      color: lightsteelblue;
+    }
+  }
+}
+
+.actions{
+  @extend .buttons
+}
+
+.card-footer{
+  @extend .buttons
+}
+
