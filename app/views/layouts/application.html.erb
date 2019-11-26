@@ -15,7 +15,7 @@
   <% if user_signed_in? %>
     <nav class="navbar is-dark" style="height:100px" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-      <%= link_to "MAIN", root_path(), style: 'color: #ffdd57; font-size: 300%; font-family: copperplate gothic bold;', class:"navbar-item"%>
+      <%= link_to "MAIN", root_path(), style: 'color: #ffdd57; font-size: 300%;', class:"navbar-item"%>
 
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -74,7 +74,7 @@
   <% else %>
     <nav class="navbar is-dark" style="height:100px" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-      <%= link_to "MAIN", root_path(), style: 'color: #ffdd57; font-size: 300%; font-family: copperplate gothic bold;', class:"navbar-item"%>
+      <%= link_to "MAIN", root_path(), style: 'color: #ffdd57; font-size: 300%;', class:"navbar-item"%>
 
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -123,6 +123,12 @@
         });
       })();
     </script>
+  <% end %>
+
+  <% if flash[:notice] %>
+  <div class="notification is-primary">
+    <%= flash[:notice] %>
+  </div>
   <% end %>
     <%= yield %>
   </body>
