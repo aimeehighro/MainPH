@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    add_breadcrumb @category.name, :category_path
     @pagy, @products = pagy(Product.where(category_id: @category.id), items: 8)
   end
   # def show

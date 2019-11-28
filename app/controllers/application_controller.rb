@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :initialize_session
   before_action :increment_visit_count
   before_action :load_cart
+  add_breadcrumb 'Home', :root_path
 
   protected
 
@@ -30,6 +31,8 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cart
-    @cart = Product.find(session[:cart])
+    # Extract all the product ids from the array of hashes.
+    product_ids = session[:cart].map { |p| p['id'] }
+    @cart = Product.find(product_ids)
   end
 end

@@ -16,6 +16,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    add_breadcrumb @product.category.name, category_path(@product.category.id)
+    add_breadcrumb 'Product', :product_path
   end
 
   private
