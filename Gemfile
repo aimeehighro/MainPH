@@ -35,6 +35,7 @@ gem "bulma-rails", "~> 0.8.0"
 gem 'pagy'
 gem "mini_magick"
 gem "breadcrumbs_on_rails"
+gem 'stripe'
 
 group :development, :test do
 
