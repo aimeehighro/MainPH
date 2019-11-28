@@ -27,17 +27,21 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-        <%# <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Products
         </a>
 
         <div class="navbar-dropdown">
             <%= link_to "T-Shirts", category_path(1), class:"navbar-item"%>
-          <%# <hr class="navbar-divider">
+          <hr class="navbar-divider">
              <%= link_to "Hoodies", category_path(2), class:"navbar-item"%>
-        <%# </div>
-      </div> %>
+              <hr class="navbar-divider">
+             <%= link_to "Kids", category_path(3), class:"navbar-item"%>
+              <hr class="navbar-divider">
+             <%= link_to "Bracelet", category_path(4), class:"navbar-item"%>
+        </div>
+      </div>
 
      <%= link_to "About", abouts_index_path(), class:"navbar-item"%>
      <%= link_to "Contact", contacts_index_path(), class:"navbar-item"%>
@@ -86,17 +90,21 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-        <%# <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Products
         </a>
 
         <div class="navbar-dropdown">
             <%= link_to "T-Shirts", category_path(1), class:"navbar-item"%>
-          <%# <hr class="navbar-divider">
+          <hr class="navbar-divider">
              <%= link_to "Hoodies", category_path(2), class:"navbar-item"%>
-        <%# </div>
-      </div> %>
+              <hr class="navbar-divider">
+                          <%= link_to "Kids", category_path(3), class:"navbar-item"%>
+              <hr class="navbar-divider">
+             <%= link_to "Bracelet", category_path(4), class:"navbar-item"%>
+         </div>
+      </div>
 
      <%= link_to "About", abouts_index_path(), class:"navbar-item"%>
      <%= link_to "Contact", contacts_index_path(), class:"navbar-item"%>
