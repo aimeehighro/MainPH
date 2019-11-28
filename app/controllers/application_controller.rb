@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def load_cart
     # Extract all the product ids from the array of hashes.
-    product_ids = session[:cart].map { |p| p['id'] }
-    @cart = Product.find(product_ids)
+    @cart = session[:cart].map { |p| { product: Product.find(p['id']), quantity: p['quantity'] } }
+    # @cart = Product.find(product_ids)
   end
 end

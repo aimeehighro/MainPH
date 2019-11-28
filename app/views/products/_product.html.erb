@@ -4,7 +4,7 @@
 <% if product.image.present?%>
   <div class="card-image">
     <figure class="image is-3by3">
-        <%= image_tag url_for(product.thumbnail)%>
+        <%= image_tag url_for(product.thumbnail), alt: product.name%>
     </figure>
   </div>
   <% end%>
@@ -24,20 +24,26 @@
       <%= product.description %>
     </div>
   </div>
-   <footer class="card-footer">
    <% if @cart.include?(product) %>
+   <footer class="card-footer">
       <p class="card-footer-item">
       <span>
        <%= link_to "Remove from cart", remove_from_cart_path(product.id), class:"button is-danger", method: :delete %>
       </span>
     </p>
+    </footer>
    <% else%>
+                <%= form_tag add_to_cart_path(product.id), :method => "post" do %>
+              <%= number_field_tag :quantity, 1,  min: 1, id: product.id, class:"input"%>
+
+   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
-       <%= link_to "Add to cart", add_to_cart_path(product.id), class:"button is-dark", method: :post %>
+                    <%= submit_tag "Add to cart", class:"button is-dark" %>
       </span>
     </p>
-  <% end %>
     </footer>
+                                             <% end %>
+  <% end %>
   </div>
 </div>

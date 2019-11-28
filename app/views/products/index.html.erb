@@ -5,11 +5,12 @@
 <%= pagy_bulma_nav(@pagy).html_safe %>
           <div class="control">
             <div class="field has-addons">
+                          <%= form_tag products_path, :method => "get" do %>
               <div class="select">
-              <%= form_tag products_path, :method => "get" do %>
+
                     <%= select_tag :category_id, options_from_collection_for_select(Category.all, 'id', 'name') %>
               </div>
-              <%= text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input", style:"width:25%"%>
+              <%= text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input is-fullwidth", style:"width:25%"%>
               <%= submit_tag "Search", class:"button is-warning" %>
                <% end %>
                                  </div>
@@ -24,10 +25,11 @@
     Recent Update
   </label>
    <%= submit_tag "Filter", class:"button is-warning"%>
-</div>
            <% end %>
+           </div>
 <br/>
 <div class="columns is-half is-multiline">
 <%= render partial: 'products/product', collection: @products, locals: { name_is_link: true }%>
+</div>
 </div>
 </div>

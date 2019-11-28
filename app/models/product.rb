@@ -23,4 +23,8 @@ class Product < ApplicationRecord
   def small
     image.variant(resize: '150x150!').processed
   end
+
+  def price_in_cents
+    (price * 100).to_i
+  end
 end
