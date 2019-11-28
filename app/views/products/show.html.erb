@@ -1,2 +1,12 @@
-<h1>Products#show</h1>
+
+<div class="container">
+<h1 class="title is-1" style="text-align:center;"><%=@product.name%></h1>
+<div style="text-align:center;">
+<%= render_breadcrumbs :separator => ' > ' %>
+</div>
+<div class="columns">
+<div class="column"></div>
 <%= render partial: 'product', object: @product, locals: { name_is_link: false}%>
+<div class="column"></div>
+</div>
+</div>
