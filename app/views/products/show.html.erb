@@ -4,9 +4,16 @@
 <div style="text-align:center;">
 <%= render_breadcrumbs :separator => ' > ' %>
 </div>
-<div class="columns">
-<div class="column"></div>
-<%= render partial: 'product', object: @product, locals: { name_is_link: false}%>
-<div class="column"></div>
-</div>
+<div>
+<%
+  display_product = @product.as_json
+  display_product['image'] = url_for(@product.thumbnail)
+%>
+
+ <%= react_component('product', {data: display_product})%>
+<%
+=begin%>
+ <%= render partial: 'product', object: @product, locals: { name_is_link: false}%>
+<%
+=end%>
 </div>
