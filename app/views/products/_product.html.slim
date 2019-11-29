@@ -1,0 +1,30 @@
+.column.is-one-quarter
+  .card.products
+    - if product.image.present?
+      .card-image
+        figure.image.is-3by3
+          = image_tag url_for(product.thumbnail), alt: product.name
+    .card-content
+      .media
+        .media-content
+          - if name_is_link
+            p.title.is-4= link_to product.name, product_path(product)
+          - else
+            p.title.is-4= product.name
+          p.subtitle.is-6
+            strong Amount:
+            | $#{product.price}
+      .content
+        = product.description
+    - if @cart.include?(product)
+      footer.card-footer
+        p.card-footer-item
+          span
+            = link_to "Remove from cart", remove_from_cart_path(product.id), class:"button is-danger", method: :delete
+    - else
+      = form_tag add_to_cart_path(product.id), :method => "post" do
+        = number_field_tag :quantity, 1,  min: 1, id: product.id, class:"input"
+        footer.card-footer
+          p.card-footer-item
+            span
+              = submit_tag "Add to cart", class:"button is-dark"

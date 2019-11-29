@@ -1,0 +1,11 @@
+.container
+  h1.title.is-1 style="text-align:center;" = @product.name
+  div style="text-align:center;"
+    = render_breadcrumbs :separator => ' > '
+  div
+    - display_product = @product.as_json
+    - display_product['image'] = url_for(@product.thumbnail)
+    = react_component('product', {data: display_product})
+    - =begin
+    = render partial: 'product', object: @product, locals: { name_is_link: false}
+    - =end

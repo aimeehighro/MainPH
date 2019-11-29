@@ -1,0 +1,28 @@
+section.hero.is-medium.is-warning.is-bold
+  .hero-body
+    .container style=("text-align: center;")
+      h1.title style=("font-size: 500%;")
+        | CONTACT US
+      h2.subtitle
+        = @contacts[0].description
+article.message.is-dark
+  .message-header
+    p
+      i.fas.fa-at
+      | Email:
+  .message-body
+    = @contacts[0].email
+article.message.is-link
+  .message-header
+    p
+      i.fab.fa-facebook
+      | Facebook:
+  .message-body
+    = @contacts[0].facebook
+article.message.is-warning
+  .message-header
+    p
+      i.fab.fa-instagram
+      | Instagram:
+  .message-body
+    = @contacts[0].ig

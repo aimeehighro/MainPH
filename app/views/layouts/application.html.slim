@@ -1,0 +1,99 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title MainPH
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://js.stripe.com/v3/"
+  body
+    script defer="defer" src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    - if user_signed_in?
+      nav.navbar.is-dark aria-label=("main navigation") role="navigation" style="height:100px"
+        .navbar-brand
+          = link_to "MAIN", root_path(), style: 'color: #ffdd57; font-size: 300%;', class:"navbar-item"
+          a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button"
+            span aria-hidden="true"
+            span aria-hidden="true"
+            span aria-hidden="true"
+        #navbarBasicExample.navbar-menu
+          .navbar-start
+            .navbar-item.has-dropdown.is-hoverable
+              a.navbar-link
+                | Products
+              .navbar-dropdown
+                = link_to "T-Shirts", category_path(1), class:"navbar-item"
+                hr.navbar-divider/
+                = link_to "Hoodies", category_path(2), class:"navbar-item"
+                hr.navbar-divider/
+                = link_to "Kids", category_path(3), class:"navbar-item"
+                hr.navbar-divider/
+                = link_to "Bracelet", category_path(4), class:"navbar-item"
+            = link_to "About", abouts_index_path(), class:"navbar-item"
+            = link_to "Contact", contacts_index_path(), class:"navbar-item"
+          .navbar-end
+            .navbar-item
+              .navbar-item.has-dropdown.is-hoverable
+                a.navbar-link
+                  | My Account
+                .navbar-dropdown
+                  = link_to "Edit My Account", edit_user_registration_path(), class:"navbar-item"
+                  hr.navbar-divider/
+                  = link_to "Orders", category_path(2), class:"navbar-item"
+              .buttons
+                = link_to "Sign out", destroy_user_session_path(), method: :delete, class:"navbar-item", class:"button is-info", style:"font-weight:bolder;"
+      javascript:
+        | (function() {
+          | var burger = document.querySelector('.burger');
+          | var nav = document.querySelector('#'+burger.dataset.target);
+          | burger.addEventListener('click', function(){
+            | burger.classList.toggle('is-active');
+            | nav.classList.toggle('is-active');
+          | });
+        | })();
+    - else
+      nav.navbar.is-dark aria-label=("main navigation") role="navigation" style="height:100px"
+        .navbar-brand
+          = link_to "MAIN", root_path(), style: 'color: #ffdd57; font-size: 300%;', class:"navbar-item"
+          a.navbar-burger.burger aria-expanded="false" aria-label="menu" data-target="navbarBasicExample" role="button"
+            span aria-hidden="true"
+            span aria-hidden="true"
+            span aria-hidden="true"
+        #navbarBasicExample.navbar-menu
+          .navbar-start
+            .navbar-item.has-dropdown.is-hoverable
+              a.navbar-link
+                | Products
+              .navbar-dropdown
+                = link_to "T-Shirts", category_path(1), class:"navbar-item"
+                hr.navbar-divider/
+                = link_to "Hoodies", category_path(2), class:"navbar-item"
+                hr.navbar-divider/
+                = link_to "Kids", category_path(3), class:"navbar-item"
+                hr.navbar-divider/
+                = link_to "Bracelet", category_path(4), class:"navbar-item"
+            = link_to "About", abouts_index_path(), class:"navbar-item"
+            = link_to "Contact", contacts_index_path(), class:"navbar-item"
+          .navbar-end
+            .navbar-item
+              .buttons
+                = link_to ordered_products_index_path(), class:"button is-info" do
+                  i.fas.fa-shopping-cart
+                = link_to "Sign up", new_user_registration_path(), class:"navbar-item", class:"button is-warning", style:"font-weight:bolder;"
+                = link_to "Log in", new_user_session_path(), class:"navbar-item", class:"button is-black", style:"font-weight:bolder;"
+      javascript:
+        | (function() {
+          | var burger = document.querySelector('.burger');
+          | var nav = document.querySelector('#'+burger.dataset.target);
+          | burger.addEventListener('click', function(){
+            | burger.classList.toggle('is-active');
+            | nav.classList.toggle('is-active');
+          | });
+        | })();
+    - if flash[:notice]
+      .notification.is-primary
+        = flash[:notice]
+    = yield

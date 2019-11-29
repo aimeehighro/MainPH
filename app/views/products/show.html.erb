@@ -8,6 +8,7 @@
 <%
   display_product = @product.as_json
   display_product['image'] = url_for(@product.thumbnail)
+  display_product['image1'] = url_for(@product.large)
 %>
 
  <%= react_component('product', {data: display_product})%>

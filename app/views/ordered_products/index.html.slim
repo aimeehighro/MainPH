@@ -1,0 +1,41 @@
+h1.title.is-1 style="text-align:center;"  Shopping Cart
+.container
+- if @cart.empty?
+  section.hero.is-info
+    .hero-body
+      .container
+        h1.title
+          | Sorry!
+        h2.subtitle
+          | No items in your cart
+- else
+  .section
+    table.table.is-bordered.is-striped.is-hoverable
+      thead
+        tr
+          th
+            | Image
+          th
+            | Product
+          th
+            | Unit Price
+          th
+            | Qty
+          th
+            | Remove
+          th Buy Now
+      - @cart.each do |p|
+        tbody
+          tr
+            td
+              = image_tag url_for(p[:product].small)
+            td
+              = p[:product].name
+            td
+              = p[:product].price
+            td
+              = link_to "-", remove_from_cart_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :delete
+              = p[:quantity]
+              = link_to "+", remove_from_cart_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :delete
+            td
+              = link_to "Remove from cart", remove_from_cart_path(p[:product].id), class:"button is-danger", method: :delete

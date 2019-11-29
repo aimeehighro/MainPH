@@ -1,0 +1,17 @@
+section.hero.is-medium.is-warning.is-bold
+  .hero-body
+    .container
+      h1.title style=("font-size: 500%; text-align: center;")
+        | ABOUT MAIN
+section.section
+  .container style=("text-align: center;")
+    h1.title Our Story
+    br/
+    h2.subtitle
+      = @abouts[0].description
+section.section
+  .container style=("text-align: center;")
+    h1.title Entity Relationship Diagram (ERD)
+    br/
+    h2.subtitle
+      = image_tag("main erd.png", alt: "ERD")

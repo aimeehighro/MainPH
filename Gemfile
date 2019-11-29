@@ -36,6 +36,7 @@ gem 'pagy'
 gem "mini_magick"
 gem "breadcrumbs_on_rails"
 gem 'stripe'
+gem "slim-rails"
 
 group :development, :test do
 
