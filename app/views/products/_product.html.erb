@@ -1,6 +1,17 @@
 
 <div class="column is-one-quarter">
 <div class="card products">
+<%
+=begin%>
+ <%= debug (@cart.include?(@cart.map { |p| p['id'] == product.id}))%>
+<%
+=end%>
+<% products = session[:cart].map { |p| p['id'] }%>
+<%
+=begin%>
+ <%= debug (products)%>
+<%
+=end%>
 <% if product.image.present?%>
   <div class="card-image">
     <figure class="image is-3by3">
@@ -24,7 +35,7 @@
       <%= product.description %>
     </div>
   </div>
-   <% if @cart.include?(product) %>
+   <% if products.include?(product.id) %>
    <footer class="card-footer">
       <p class="card-footer-item">
       <span>

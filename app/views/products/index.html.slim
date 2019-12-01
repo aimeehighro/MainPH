@@ -3,20 +3,20 @@ h1.title.is-1 style="text-align:center;"  Products
   = pagy_bulma_nav(@pagy).html_safe
   .control
     .field.has-addons
-      = form_tag products_path, :method => "get" do
-        .select
+      .select
+        = form_tag products_path, :method => "get" do
           = select_tag :category_id, options_from_collection_for_select(Category.all, 'id', 'name')
-        = text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input is-fullwidth", style:"width:25%"
-        = submit_tag "Search", class:"button is-warning"
-    .control
-      = form_tag products_path, :method => 'get' do
-        label.radio
-          = radio_button_tag :sort, "created_at"
-          | Newest
-        label.radio style="padding-top:10px;"
-          = radio_button_tag :sort, "updated_at"
-          | Recent Update
-        = submit_tag "Filter", class:"button is-warning"
-    br/
-    .columns.is-half.is-multiline
-      = render partial: 'products/product', collection: @products, locals: { name_is_link: true }
+      = text_field_tag :search, params[:search], placeholder: "Search a Product", class: "input is-fullwidth", style:"width:25%"
+      = submit_tag "Search", class:"button is-warning"
+  .control
+    = form_tag products_path, :method => 'get' do
+      label.radio
+        = radio_button_tag :sort, "created_at"
+        | Newest
+      label.radio style="padding-top:10px;"
+        = radio_button_tag :sort, "updated_at"
+        | Recent Update
+      = submit_tag "Filter", class:"button is-warning"
+  br/
+  .columns.is-half.is-multiline
+    = render partial: 'products/product', collection: @products, locals: { name_is_link: true }

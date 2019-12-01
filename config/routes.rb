@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   get 'ordered_products/index'
   post 'ordered_products/add_to_cart/:id', to: 'ordered_products#add_to_cart', as: 'add_to_cart'
   delete 'ordered_products/remove_from_cart/:id', to: 'ordered_products#remove_from_cart', as: 'remove_from_cart'
+  post 'ordered_products/incremenet_qty/:id', to: 'ordered_products#increment_qty', as: 'increment_qty'
+  post 'ordered_products/decerement_qty/:id', to: 'ordered_products#decrement_qty', as: 'decrement_qty'
+  scope '/checkout' do
+    get 'index', to: 'checkout#index', as: 'checkout_index'
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+  end
   # get 'products/index'
   # get 'products/show'
 

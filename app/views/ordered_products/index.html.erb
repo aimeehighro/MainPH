@@ -1,7 +1,6 @@
 
 <h1 class="title is-1" style="text-align:center;">Shopping Cart </h1>
 <div class="container">
- </div>
 <% if @cart.empty? %>
 <section class="hero is-info">
   <div class="hero-body">
@@ -16,7 +15,8 @@
   </div>
 </section>
 <% else %>
-<div class="section">
+<div class="column is-full">
+<section class="hero is-info">
   <table class="table is-bordered is-striped is-hoverable">
   <thead>
   <tr>
@@ -43,13 +43,17 @@
       <td> <%= image_tag url_for(p[:product].small)%></td>
       <td> <%= p[:product].name %></td>
       <td> <%= p[:product].price %></td>
-      <td> <%= link_to "-", remove_from_cart_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :delete %>
+      <td> <%= link_to "-", decrement_qty_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :post%>
       <%= p[:quantity] %>
-      <%= link_to "+", remove_from_cart_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :delete %></td>
+      <%= link_to "+", increment_qty_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :post%></td>
         <td> <%= link_to "Remove from cart", remove_from_cart_path(p[:product].id), class:"button is-danger", method: :delete %></td>
+         <td> <%= link_to_if user_signed_in?, "Buy Now", remove_from_cart_path(p[:product].id), class:"button is-info"%></td>
       </tr>
       </tbody>
         <%end%>
   </table>
-  </div>
+  </section>
+    </div>
 <%end%>
+ </div>
+

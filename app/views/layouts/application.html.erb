@@ -60,7 +60,10 @@
         </div>
       </div>
                       <div class="buttons">
-             <%= link_to "Sign out", destroy_user_session_path(), method: :delete, class:"navbar-item", class:"button is-info", style:"font-weight:bolder;"%>
+                               <%= link_to ordered_products_index_path(), class:"button is-info" do %>
+  <i class="fas fa-shopping-cart"></i>
+<% end %>
+             <%= link_to "Sign out", destroy_user_session_path(), method: :delete, class:"navbar-item", class:"button is-danger"%>
         </div>
 
       </div>
