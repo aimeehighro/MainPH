@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 class CheckoutController < ApplicationController
-  before_action :authenticate_user!
-
-  def index
-    redirect_to ordered_products_index_path if session[:cart].count == 0
-    @user = current_user
-    @province = Province.find(@user.province.id)
-  end
-
   def create
     # product = Product.find(params[:id])
 
