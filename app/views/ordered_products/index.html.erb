@@ -1,4 +1,3 @@
-
 <h1 class="title is-1" style="text-align:center;">Shopping Cart </h1>
 <div class="container">
 <% if @cart.empty? %>
@@ -16,26 +15,17 @@
 </section>
 <% else %>
 <div class="column is-full">
-<section class="hero is-info">
-  <table class="table is-bordered is-striped is-hoverable">
+<section class="hero">
+  <table class="table is-bordered is-hoverable">
   <thead>
   <tr>
-  <th>Image
-  </th>
-  <th>
-      Product
-      </th>
-        <th>
-     Unit Price
-      </th>
-              <th>
-      Qty
-      </th>
-      <th>
-      Remove
-      </th>
-      <th>Buy Now</th>
-      </tr>
+  <th>Image</th>
+  <th>Product</th>
+  <th>Unit Price</th>
+  <th>Qty</th>
+  <th>Total</th>
+  <th>Remove</th>
+  </tr>
       </thead>
        <% @cart.each do |p|%>
       <tbody>
@@ -46,13 +36,77 @@
       <td> <%= link_to "-", decrement_qty_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :post%>
       <%= p[:quantity] %>
       <%= link_to "+", increment_qty_path(p[:product].id), class:"button is-rounded is-outlined is-small", method: :post%></td>
+      <td>      <%= p[:quantity].to_i * p[:product].price.to_f%></td>
         <td> <%= link_to "Remove from cart", remove_from_cart_path(p[:product].id), class:"button is-danger", method: :delete %></td>
-         <td> <%= link_to_if user_signed_in?, "Buy Now", remove_from_cart_path(p[:product].id), class:"button is-info"%></td>
-      </tr>
+        </tr>
+                <%end%>
+            <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+  <th>Sub Total</th>
+  <td><%=@sub_total%></td>
+    </tr>
+      <tr>
+                  <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+  <th>GST</th>
+    <td><%=@gst_total%></td>
+   </tr>
+    <tr>
+                <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+  <th>PST</th>
+    <td><%=@pst_total%></td>
+  </tr>
+  <tr>
+              <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+  <th>HST</th>
+    <td><%=@hst_total%></td>
+  </tr>
+  <tr>
+              <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+  <th>QST</th>
+    <td><%=@qst_total%></td>
+  </tr>
+   <tr>
+               <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+  <th>Total</th>
+    <td><%=@total%></td>
+  </tr>
       </tbody>
-        <%end%>
   </table>
   </section>
+    </div>
+    <div class="column is-full">
+    <section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Billing Information
+      </h1>
+      <hr/>
+      <h2 class="subtitle">Email: <%=@user.email%></h2>
+      <h2 class="subtitle">Full Name: <%=@user.first_name%> <%=@user.last_name%></h2>
+      <h2 class="subtitle">Address: <%=@user.street%> <%=@user.city%> <%=@user.province.name%> <%=@user.postal_code%></h2>
+       <%= link_to_if user_signed_in?, "Buy Now", "", class:"button is-info"%>
+    </div>
+  </div>
+</section>
     </div>
 <%end%>
  </div>
