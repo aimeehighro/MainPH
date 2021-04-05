@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_home_page.png)
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_about_page.png)
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_registration_page.png
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_login_page.png)
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_user_added_some_products%20.png)
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_user_edit_info_page.png)
+![alt text](https://github.com/aimeehighro/MainPH/blob/master/website_user_shopping_cart_billing_info_page.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
